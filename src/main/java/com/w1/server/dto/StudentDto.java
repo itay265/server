@@ -1,39 +1,30 @@
-package com.w1.server.entity;
+package com.w1.server.dto;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
-@Entity
-@Table(name = "students")
-public class Student {
+public class StudentDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank(message = "First name is required")
     @Size(min = 2, max = 50)
-    @Column(name = "first_name", nullable = false)
     private String firstName;
 
     @NotBlank(message = "Last name is required")
     @Size(min = 2, max = 50)
-    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @Min(value = 0)
-    @Column(nullable = false)
     private double age;
 
     @NotBlank
     @Email
-    @Column(unique = true, nullable = false)
     private String email;
 
-    public Student() {
+    public StudentDto() {
     }
 
-    public Student(Long id, String firstName, String lastName, double age, String email) {
+    public StudentDto(Long id, String firstName, String lastName, double age, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
